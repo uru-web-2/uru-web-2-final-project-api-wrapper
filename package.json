@@ -1,0 +1,30 @@
+{
+  "name": "@ralvarezdev/uru-web-2-final-project-api-wrapper",
+  "version": "1.0.0",
+  "description": "Final project API wrapper from Web 2 college course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uru-web-2/uru-web-2-final-project-api-wrapper.git"
+  },
+  "keywords": [
+    "api",
+    "uru",
+    "universidad-rafael-urdaneta",
+    "rafael-urdaneta-university",
+    "express",
+    "expressjs",
+    "express-session",
+    "api",
+    "api-wrapper"
+  ],
+  "author": "Ramón Álvarez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uru-web-2/uru-web-2-final-project-api-wrapper/issues"
+  },
+  "homepage": "https://github.com/uru-web-2/uru-web-2-final-project-api-wrapper#readme"
+}

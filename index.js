@@ -20,7 +20,7 @@ export class APIWrapper {
 
     // Sign up
     async SignUp(firstName, lastName, username, password, email, documentNumber, documentType, documentCountry) {
-        return await this.#fetch({
+        return await this.#fetch('/signup', {
             first_name: firstName,
             last_name: lastName,
             username,
@@ -34,10 +34,44 @@ export class APIWrapper {
 
     // Log in
     async LogIn(username, password, profile){
-        return await this.#fetch({
+        return await this.#fetch('/login',{
             username,
             password,
             profile
+        })
+    }
+
+    // Log out
+    async LogOut(){
+        return await this.#fetch('/logout', {})
+    }
+
+    // Send email verification
+    async SendEmailVerification(email){
+        return await this.#fetch('/send-email-verification', {
+            email
+        })
+    }
+
+    // Verify email
+    async VerifyEmail(token){
+        return await this.#fetch('/verify-email', {
+            token
+        })
+    }
+
+    // Forgot password
+    async ForgotPassword(email){
+        return await this.#fetch('/forgot-password', {
+            email
+        })
+    }
+
+    // Reset password
+    async ResetPassword(token, password){
+        return await this.#fetch('/reset-password', {
+            token,
+            password
         })
     }
 

@@ -1,6 +1,6 @@
 {
   "name": "@ralvarezdev/uru-web-2-final-project-api-wrapper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Final project API wrapper from Web 2 college course",
   "main": "index.js",
   "scripts": {
@@ -26,5 +26,6 @@
   "bugs": {
     "url": "https://github.com/uru-web-2/uru-web-2-final-project-api-wrapper/issues"
   },
-  "homepage": "https://github.com/uru-web-2/uru-web-2-final-project-api-wrapper#readme"
+  "homepage": "https://github.com/uru-web-2/uru-web-2-final-project-api-wrapper#readme",
+  "type": "module"
 }

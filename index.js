@@ -209,4 +209,18 @@ export class APIWrapper {
             id,
             })
     }
+
+    // Update user by admin
+    async UpdateUserByAdmin(id, firstName, lastName, username, documentNumber, documentType, documentCountry) {
+        return await this.Execute(['Security'], 'User',
+            'UpdateUserByAdmin', {
+            id,
+                first_name:firstName,
+                last_name:lastName,
+                username,
+                document_number:documentNumber,
+                document_type: documentType,
+                document_country:documentCountry
+            })
+    }
 }

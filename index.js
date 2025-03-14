@@ -223,4 +223,13 @@ export class APIWrapper {
                 document_country:documentCountry
             })
     }
+
+    // Get all users
+    async GetAllUsers(offset, limit) {
+        return await this.Execute(['Security'], 'User',
+            'GetAllUsers', {
+            offset,
+            limit
+            })
+    }
 }

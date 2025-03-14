@@ -232,4 +232,23 @@ export class APIWrapper {
             limit
             })
     }
+
+    // Get methods by profile ID and object ID
+    async GetMethodsByProfileIDObjectID(profileID, objectID) {
+        return await this.Execute(['Security'], 'Security',
+            'GetMethodsByProfileIDObjectID', {
+            profile_id: profileID,
+            object_id: objectID
+            })
+    }
+
+    // Set profile permissions
+    async SetProfilePermissions(profileID, assignMethodIDs, revokeMethodIDs) {
+        return await this.Execute(['Security'], 'Security',
+            'SetProfilePermissions', {
+            profile_id: profileID,
+            assign_method_ids: assignMethodIDs,
+            revoke_method_ids: revokeMethodIDs
+            })
+    }
 }

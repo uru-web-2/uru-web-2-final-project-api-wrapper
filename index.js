@@ -180,10 +180,10 @@ export class APIWrapper {
     }
 
     // Search user by username
-    async SearchUserByUsername(username) {
+    async SearchUserByUsername(username, limit) {
         return await this.Execute(['Security'], 'User',
             'SearchUserByUsername', {
-            username,
+            username, limit
             })
     }
 

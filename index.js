@@ -251,4 +251,24 @@ export class APIWrapper {
             revoke_method_ids: revokeMethodIDs
             })
     }
+
+    // Create publisher
+    async CreatePublisher(name, description){
+        return await this.Execute(['Document'], 'Publisher', 'CreatePublisher', {name,  description})
+    }
+
+    // Update publisher
+    async UpdatePublisher(id, name, description){
+        return await this.Execute(['Document'], 'Publisher', 'UpdatePublisher', {id, name,  description})
+    }
+
+    // Delete publisher
+    async DeletePublisher(id){
+        return await this.Execute(['Document'], 'Publisher', 'DeletePublisher', {id})
+    }
+
+    // Get all publishers
+    async GetAllPublishers(){
+        return await this.Execute(['Document'], 'Publisher', 'GetAllPublishers')
+    }
 }

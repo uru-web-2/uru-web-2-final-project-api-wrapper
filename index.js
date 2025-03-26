@@ -351,4 +351,39 @@ export class APIWrapper {
     async GetAllLocations(offset, limit){
         return await this.Execute(['Library'], 'Location', 'GetAllLocations', {offset, limit})
     }
+
+    // Assign document language
+    async AssignDocumentLanguage(documentID, languageID){
+        return await this.Execute(['Library', 'Document'], 'Language', 'AssignDocumentLanguage', {document_id: documentID, language_id: languageID})
+    }
+
+    // Remove document language
+    async RemoveDocumentLanguage(documentID, languageID){
+        return await this.Execute(['Library', 'Document'], 'Language', 'RemoveDocumentLanguage', {document_id: documentID, language_id: languageID})
+    }
+
+    // Get document topics by document ID
+    async GetDocumentTopicsByDocumentID(id){
+        return await this.Execute(['Library', 'Document'], 'Topic', 'GetDocumentTopicsByDocumentID', {id})
+    }
+
+    // Get document languages by document ID
+    async GetDocumentLanguagesByDocumentID(id){
+        return await this.Execute(['Library', 'Document'], 'Language', 'GetDocumentLanguagesByDocumentID', {id})
+    }
+
+    // Assign document author
+    async AssignDocumentAuthor(documentID, authorID){
+        return await this.Execute(['Library', 'Document'], 'Author', 'AssignDocumentAuthor', {document_id: documentID, author_id: authorID})
+    }
+
+    // Remove document author
+    async RemoveDocumentAuthor(documentID, authorID){
+        return await this.Execute(['Library', 'Document'], 'Author', 'RemoveDocumentAuthor', {document_id: documentID, author_id: authorID})
+    }
+
+    // Get document authors by document ID
+    async GetDocumentAuthorsByDocumentID(id){
+        return await this.Execute(['Library', 'Document'], 'Author', 'GetDocumentAuthorsByDocumentID', {id})
+    }
 }

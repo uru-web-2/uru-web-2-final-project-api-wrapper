@@ -311,4 +311,24 @@ export class APIWrapper {
     async RemoveDocumentTopic(documentID, topicID){
         return await this.Execute(['Document'], 'Topic', 'RemoveDocumentTopic', {document_id: documentID, topic_id: topicID})
     }
+
+    // Get all countries
+    async GetAllCountries(){
+        return await this.Execute(['Other'], 'Country', 'GetAllCountries')
+    }
+
+    // Search country by name
+    async SearchCountryByName(name){
+        return await this.Execute(['Other'], 'Country', 'SearchCountryByName', {name})
+    }
+
+    // Get all languages
+    async GetAllLanguages(){
+        return await this.Execute(['Other'], 'Language', 'GetAllLanguages')
+    }
+
+    // Search language by name
+    async SearchLanguageByName(name){
+        return await this.Execute(['Other'], 'Language', 'SearchLanguageByName', {name})
+    }
 }

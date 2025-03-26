@@ -271,4 +271,44 @@ export class APIWrapper {
     async GetAllPublishers(){
         return await this.Execute(['Document'], 'Publisher', 'GetAllPublishers')
     }
+
+    // Search publisher by name
+    async SearchPublisherByName(name){
+        return await this.Execute(['Document'], 'Publisher', 'SearchPublisherByName', {name})
+    }
+
+    // Create topic
+    async CreateTopic(name, description){
+        return await this.Execute(['Document'], 'Topic', 'CreateTopic', {name, description})
+    }
+
+    // Update topic
+    async UpdateTopic(id, name, description){
+        return await this.Execute(['Document'], 'Topic', 'UpdateTopic', {id, name, description})
+    }
+
+    // Delete topic
+    async DeleteTopic(id){
+        return await this.Execute(['Document'], 'Topic', 'DeleteTopic', {id})
+    }
+
+    // Get all topics
+    async GetAllTopics(){
+        return await this.Execute(['Document'], 'Topic', 'GetAllTopics')
+    }
+
+    // Search topic by name
+    async SearchTopicByName(name){
+        return await this.Execute(['Document'], 'Topic', 'SearchTopicByName', {name})
+    }
+
+    // Assign document topic
+    async AssignDocumentTopic(documentID, topicID){
+        return await this.Execute(['Document'], 'Topic', 'AssignDocumentTopic', {document_id: documentID, topic_id: topicID})
+    }
+
+    // Remove document topic
+    async RemoveDocumentTopic(documentID, topicID){
+        return await this.Execute(['Document'], 'Topic', 'RemoveDocumentTopic', {document_id: documentID, topic_id: topicID})
+    }
 }

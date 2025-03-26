@@ -1,6 +1,6 @@
 {
   "name": "@ralvarezdev/uru-web-2-final-project-api-wrapper",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Final project API wrapper from Web 2 college course",
   "main": "index.js",
   "scripts": {

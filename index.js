@@ -386,4 +386,30 @@ export class APIWrapper {
     async GetDocumentAuthorsByDocumentID(id){
         return await this.Execute(['Library', 'Document'], 'Author', 'GetDocumentAuthorsByDocumentID', {id})
     }
+
+    // Create location section
+    async CreateLocationSection(locationID, name){
+        return await this.Execute(['Library'], 'LocationSection', 'CreateLocationSection', {location_id: locationID, name})
+    }
+
+    // Update location section
+    async UpdateLocationSection(id, name){
+        return await this.Execute(['Library'], 'LocationSection', 'UpdateLocationSection', {id, name})
+    }
+
+    // Delete location section
+    async DeleteLocationSection(id){
+        return await this.Execute(['Library'], 'LocationSection', 'DeleteLocationSection', {id})
+    }
+
+    // Get all location sections
+    async GetAllLocationSections(offset, limit){
+        return await this.Execute(['Library'], 'LocationSection', 'GetAllLocationSections', {offset, limit})
+    }
+
+    // Get location sections by location ID
+    async GetLocationSectionsByLocationID(locationID){
+        return await this.Execute(['Library'], 'LocationSection', 'GetLocationSectionsByLocationID', {location_id: locationID})
+    }
+
 }

@@ -254,81 +254,101 @@ export class APIWrapper {
 
     // Create publisher
     async CreatePublisher(name, description){
-        return await this.Execute(['Document'], 'Publisher', 'CreatePublisher', {name,  description})
+        return await this.Execute(['Library'], 'Publisher', 'CreatePublisher', {name,  description})
     }
 
     // Update publisher
     async UpdatePublisher(id, name, description){
-        return await this.Execute(['Document'], 'Publisher', 'UpdatePublisher', {id, name,  description})
+        return await this.Execute(['Library'], 'Publisher', 'UpdatePublisher', {id, name,  description})
     }
 
     // Delete publisher
     async DeletePublisher(id){
-        return await this.Execute(['Document'], 'Publisher', 'DeletePublisher', {id})
+        return await this.Execute(['Library'], 'Publisher', 'DeletePublisher', {id})
     }
 
     // Get all publishers
     async GetAllPublishers(){
-        return await this.Execute(['Document'], 'Publisher', 'GetAllPublishers')
+        return await this.Execute(['Library'], 'Publisher', 'GetAllPublishers')
     }
 
     // Search publisher by name
     async SearchPublisherByName(name){
-        return await this.Execute(['Document'], 'Publisher', 'SearchPublisherByName', {name})
+        return await this.Execute(['Library'], 'Publisher', 'SearchPublisherByName', {name})
     }
 
     // Create topic
     async CreateTopic(name, description){
-        return await this.Execute(['Document'], 'Topic', 'CreateTopic', {name, description})
+        return await this.Execute(['Library'], 'Topic', 'CreateTopic', {name, description})
     }
 
     // Update topic
     async UpdateTopic(id, name, description){
-        return await this.Execute(['Document'], 'Topic', 'UpdateTopic', {id, name, description})
+        return await this.Execute(['Library'], 'Topic', 'UpdateTopic', {id, name, description})
     }
 
     // Delete topic
     async DeleteTopic(id){
-        return await this.Execute(['Document'], 'Topic', 'DeleteTopic', {id})
+        return await this.Execute(['Library'], 'Topic', 'DeleteTopic', {id})
     }
 
     // Get all topics
     async GetAllTopics(){
-        return await this.Execute(['Document'], 'Topic', 'GetAllTopics')
+        return await this.Execute(['Library'], 'Topic', 'GetAllTopics')
     }
 
     // Search topic by name
     async SearchTopicByName(name){
-        return await this.Execute(['Document'], 'Topic', 'SearchTopicByName', {name})
+        return await this.Execute(['Library'], 'Topic', 'SearchTopicByName', {name})
     }
 
     // Assign document topic
     async AssignDocumentTopic(documentID, topicID){
-        return await this.Execute(['Document'], 'Topic', 'AssignDocumentTopic', {document_id: documentID, topic_id: topicID})
+        return await this.Execute(['Library', 'Document'], 'Topic', 'AssignDocumentTopic', {document_id: documentID, topic_id: topicID})
     }
 
     // Remove document topic
     async RemoveDocumentTopic(documentID, topicID){
-        return await this.Execute(['Document'], 'Topic', 'RemoveDocumentTopic', {document_id: documentID, topic_id: topicID})
+        return await this.Execute(['Library', 'Document'], 'Topic', 'RemoveDocumentTopic', {document_id: documentID, topic_id: topicID})
     }
 
     // Get all countries
     async GetAllCountries(){
-        return await this.Execute(['Other'], 'Country', 'GetAllCountries')
+        return await this.Execute(['Library', 'Other'], 'Country', 'GetAllCountries')
     }
 
     // Search country by name
     async SearchCountryByName(name){
-        return await this.Execute(['Other'], 'Country', 'SearchCountryByName', {name})
+        return await this.Execute(['Library', 'Other'], 'Country', 'SearchCountryByName', {name})
     }
 
     // Get all languages
     async GetAllLanguages(){
-        return await this.Execute(['Other'], 'Language', 'GetAllLanguages')
+        return await this.Execute(['Library', 'Other'], 'Language', 'GetAllLanguages')
     }
 
     // Search language by name
     async SearchLanguageByName(name){
-        return await this.Execute(['Other'], 'Language', 'SearchLanguageByName', {name})
+        return await this.Execute(['Library', 'Other'], 'Language', 'SearchLanguageByName', {name})
+    }
+
+    // Create a location
+    async CreateLocation(floor, area){
+        return await this.Execute(['Library'], 'Location', 'CreateLocation', {floor, area})
+    }
+
+    // Update a location
+    async UpdateLocation(id, floor, area){
+        return await this.Execute(['Library'], 'Location', 'UpdateLocation', {id, floor, area})
+    }
+
+    // Delete a location
+    async DeleteLocation(id){
+        return await this.Execute(['Library'], 'Location', 'DeleteLocation', {id})
+    }
+
+    // Get all locations
+    async GetAllLocations(offset, limit){
+        return await this.Execute(['Library'], 'Location', 'GetAllLocations', {offset, limit})
     }
 }

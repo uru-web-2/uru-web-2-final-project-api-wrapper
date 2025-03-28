@@ -372,19 +372,19 @@ export class APIWrapper {
         return await this.Execute(['Library', 'Document'], 'Language', 'GetDocumentLanguagesByDocumentID', {id})
     }
 
-    // Assign document author
-    async AssignDocumentAuthor(documentID, authorID){
-        return await this.Execute(['Library', 'Document'], 'Author', 'AssignDocumentAuthor', {document_id: documentID, author_id: authorID})
+    // Assign document location section
+    async AssignDocumentLocationSection(documentID, locationSectionID){
+        return await this.Execute(['Library', 'Document'], 'LocationSection', 'AssignDocumentLocationSection', {document_id: documentID, location_section_id: locationSectionID})
     }
 
-    // Remove document author
-    async RemoveDocumentAuthor(documentID, authorID){
-        return await this.Execute(['Library', 'Document'], 'Author', 'RemoveDocumentAuthor', {document_id: documentID, author_id: authorID})
+    // Remove document location section
+    async RemoveDocumentLocationSection(documentID, locationSectionID){
+        return await this.Execute(['Library', 'Document'], 'LocationSection', 'RemoveDocumentLocationSection', {document_id: documentID, location_section_id: locationSectionID})
     }
 
-    // Get document authors by document ID
-    async GetDocumentAuthorsByDocumentID(id){
-        return await this.Execute(['Library', 'Document'], 'Author', 'GetDocumentAuthorsByDocumentID', {id})
+    // Get document location sections by document ID
+    async GetDocumentLocationSectionsByDocumentID(id){
+        return await this.Execute(['Library', 'Document'], 'LocationSection', 'GetDocumentLocationSectionsByDocumentID', {id})
     }
 
     // Create location section

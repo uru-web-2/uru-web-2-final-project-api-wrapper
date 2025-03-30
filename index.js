@@ -559,7 +559,7 @@ export class APIWrapper {
 
     // Create magazine
     async CreateMagazine(name, description, releaseDate) {
-        return await this.Execute(['Library', 'Document'],
+        return await this.Execute(['Library', 'Document', 'Magazine'],
             'Magazine',
             'CreateMagazine',
             {name, description, release_date: releaseDate}
@@ -568,7 +568,7 @@ export class APIWrapper {
 
     // Update magazine
     async UpdateMagazine(id, name, description, releaseDate) {
-        return await this.Execute(['Library', 'Document'],
+        return await this.Execute(['Library', 'Document', 'Magazine'],
             'Magazine',
             'UpdateMagazine',
             {id, name, description, release_date: releaseDate}
@@ -577,7 +577,7 @@ export class APIWrapper {
 
     // Remove magazine
     async RemoveMagazine(id) {
-        return await this.Execute(['Library', 'Document'],
+        return await this.Execute(['Library', 'Document', 'Magazine'],
             'Magazine',
             'RemoveMagazine',
             {id}
@@ -586,7 +586,7 @@ export class APIWrapper {
 
     // Get all magazines
     async GetAllMagazines(offset, limit) {
-        return await this.Execute(['Library', 'Document'],
+        return await this.Execute(['Library', 'Document', 'Magazine'],
             'Magazine',
             'GetAllMagazines',
             {offset, limit}
@@ -595,10 +595,46 @@ export class APIWrapper {
 
     // Search for a magazine by name
     async SearchMagazineByName(name, limit) {
-        return await this.Execute(['Library', 'Document'],
+        return await this.Execute(['Library', 'Document', 'Magazine'],
             'Magazine',
             'SearchMagazineByName',
             {name, limit}
+        )
+    }
+
+    // Create article
+    async CreateArticle(title, description, releaseDate, pages, author, topicIDs, locationSectionIDs, languageIDs) {
+        return await this.Execute(['Library', 'Document', 'Article'],
+            'Article',
+            'CreateArticle',
+            {document_title: title, document_description: description, document_release_date: releaseDate, document_pages: pages, document_author: author, document_topic_ids: topicIDs, document_location_section_ids: locationSectionIDs, document_language_ids: languageIDs}
+        )
+    }
+
+    // Create book
+    async CreateBook(title, description, releaseDate, pages, author, topicIDs, locationSectionIDs, languageIDs, isbn, publisherID) {
+        return await this.Execute(['Library', 'Document', 'Book'],
+            'Book',
+            'CreateBook',
+            {document_title: title, document_description: description, document_release_date: releaseDate, document_pages: pages, document_author: author, document_topic_ids: topicIDs, document_location_section_ids: locationSectionIDs, document_language_ids: languageIDs, book_isbn: isbn, book_publisher_id: publisherID}
+        )
+    }
+
+    // Create magazine issue
+    async CreateMagazineIssue(title, description, releaseDate, pages, author, topicIDs, locationSectionIDs, languageIDs, magazineID, magazineIssueNumber) {
+        return await this.Execute(['Library', 'Document', 'Magazine'],
+            'MagazineIssue',
+            'CreateMagazineIssue',
+            {document_title: title, document_description: description, document_release_date: releaseDate, document_pages: pages, document_author: author, document_topic_ids: topicIDs, document_location_section_ids: locationSectionIDs, document_language_ids: languageIDs, magazine_id: magazineID, magazine_issue_number: magazineIssueNumber}
+        )
+    }
+
+    // Create thesis
+    async CreateThesis(documentTitle, documentDescription, documentReleaseDate, documentPages, documentAuthor, documentTopicIDs, documentLocationSectionIDs, documentLanguageIDs) {
+        return await this.Execute(['Library', 'Document', 'Thesis'],
+            'Thesis',
+            'CreateThesis',
+            {document_title: documentTitle, document_description: documentDescription, document_release_date: documentReleaseDate, document_pages: documentPages, document_author: documentAuthor, document_topic_ids: documentTopicIDs, document_location_section_ids: documentLocationSectionIDs, document_language_ids: documentLanguageIDs}
         )
     }
 }

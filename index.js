@@ -96,9 +96,9 @@ export class APIWrapper {
         return await this.Execute(['Security'], 'Profile', 'UpdateProfile', {id, name,  description})
     }
 
-    // Delete a profile
-    async DeleteProfile(id){
-        return await this.Execute(['Security'], 'Profile', 'DeleteProfile', {id})
+    // Remove a profile
+    async RemoveProfile(id){
+        return await this.Execute(['Security'], 'Profile', 'RemoveProfile', {id})
     }
 
     // Search profile by name
@@ -111,19 +111,19 @@ export class APIWrapper {
         return await this.Execute(['Security'], 'Profile', 'GetAllProfiles')
     }
 
-    // Assign profile permission
-    async AssignProfilePermission(methodID, profileID) {
+    // Create profile permission
+    async CreateProfilePermission(methodID, profileID) {
         return await this.Execute(['Security'], 'Security',
-            'AssignProfilePermission', {
+            'CreateProfilePermission', {
             method_id: methodID,
             profile_id: profileID
             })
     }
 
-    // Revoke profile permission
-    async RevokeProfilePermission(methodID, profileID) {
+    // Remove profile permission
+    async RemoveProfilePermission(methodID, profileID) {
         return await this.Execute(['Security'], 'Security',
-            'RevokeProfilePermission', {
+            'RemoveProfilePermission', {
             method_id: methodID,
             profile_id: profileID
             })
@@ -161,19 +161,19 @@ export class APIWrapper {
             })
     }
 
-    // Assign user profile
-    async AssignUserProfile(username, profileID) {
+    // Create user profile
+    async CreateUserProfile(username, profileID) {
         return await this.Execute(['Security'], 'Security',
-            'AssignUserProfile', {
+            'CreateUserProfile', {
             username,
                 profile_id: profileID
             })
     }
 
-    // Revoke user profile
-    async RevokeUserProfile(username, profileID) {
+    // Remove user profile
+    async RemoveUserProfile(username, profileID) {
         return await this.Execute(['Security'], 'Security',
-            'RevokeUserProfile', {
+            'RemoveUserProfile', {
             username,
                 profile_id: profileID
             })
@@ -262,9 +262,9 @@ export class APIWrapper {
         return await this.Execute(['Library'], 'Publisher', 'UpdatePublisher', {id, name,  description})
     }
 
-    // Delete publisher
-    async DeletePublisher(id){
-        return await this.Execute(['Library'], 'Publisher', 'DeletePublisher', {id})
+    // Remove publisher
+    async RemovePublisher(id){
+        return await this.Execute(['Library'], 'Publisher', 'RemovePublisher', {id})
     }
 
     // Get all publishers
@@ -287,9 +287,9 @@ export class APIWrapper {
         return await this.Execute(['Library'], 'Topic', 'UpdateTopic', {id, name, description})
     }
 
-    // Delete topic
-    async DeleteTopic(id){
-        return await this.Execute(['Library'], 'Topic', 'DeleteTopic', {id})
+    // Remove topic
+    async RemoveTopic(id){
+        return await this.Execute(['Library'], 'Topic', 'RemoveTopic', {id})
     }
 
     // Get all topics
@@ -302,9 +302,9 @@ export class APIWrapper {
         return await this.Execute(['Library'], 'Topic', 'SearchTopicByName', {name})
     }
 
-    // Assign document topic
-    async AssignDocumentTopic(documentID, topicID){
-        return await this.Execute(['Library', 'Document'], 'Topic', 'AssignDocumentTopic', {document_id: documentID, topic_id: topicID})
+    // Create document topic
+    async CreateDocumentTopic(documentID, topicID){
+        return await this.Execute(['Library', 'Document'], 'Topic', 'CreateDocumentTopic', {document_id: documentID, topic_id: topicID})
     }
 
     // Remove document topic
@@ -342,9 +342,9 @@ export class APIWrapper {
         return await this.Execute(['Library'], 'Location', 'UpdateLocation', {id, floor, area})
     }
 
-    // Delete a location
-    async DeleteLocation(id){
-        return await this.Execute(['Library'], 'Location', 'DeleteLocation', {id})
+    // Remove a location
+    async RemoveLocation(id){
+        return await this.Execute(['Library'], 'Location', 'RemoveLocation', {id})
     }
 
     // Get all locations
@@ -352,9 +352,9 @@ export class APIWrapper {
         return await this.Execute(['Library'], 'Location', 'GetAllLocations', {offset, limit})
     }
 
-    // Assign document language
-    async AssignDocumentLanguage(documentID, languageID){
-        return await this.Execute(['Library', 'Document'], 'Language', 'AssignDocumentLanguage', {document_id: documentID, language_id: languageID})
+    // Create document language
+    async CreateDocumentLanguage(documentID, languageID){
+        return await this.Execute(['Library', 'Document'], 'Language', 'CreateDocumentLanguage', {document_id: documentID, language_id: languageID})
     }
 
     // Remove document language
@@ -372,9 +372,9 @@ export class APIWrapper {
         return await this.Execute(['Library', 'Document'], 'Language', 'GetDocumentLanguagesByDocumentID', {id})
     }
 
-    // Assign document location section
-    async AssignDocumentLocationSection(documentID, locationSectionID){
-        return await this.Execute(['Library', 'Document'], 'LocationSection', 'AssignDocumentLocationSection', {document_id: documentID, location_section_id: locationSectionID})
+    // Create document location section
+    async CreateDocumentLocationSection(documentID, locationSectionID){
+        return await this.Execute(['Library', 'Document'], 'LocationSection', 'CreateDocumentLocationSection', {document_id: documentID, location_section_id: locationSectionID})
     }
 
     // Remove document location section
@@ -397,9 +397,9 @@ export class APIWrapper {
         return await this.Execute(['Library'], 'LocationSection', 'UpdateLocationSection', {id, name})
     }
 
-    // Delete location section
-    async DeleteLocationSection(id){
-        return await this.Execute(['Library'], 'LocationSection', 'DeleteLocationSection', {id})
+    // Remove location section
+    async RemoveLocationSection(id){
+        return await this.Execute(['Library'], 'LocationSection', 'RemoveLocationSection', {id})
     }
 
     // Get all location sections

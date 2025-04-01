@@ -381,7 +381,7 @@ export class APIWrapper {
 
     // Get all countries
     async GetAllCountries() {
-        return await this.Execute(['Library', 'Other'],
+        return await this.Execute(['Other'],
             'Country',
             'GetAllCountries'
         )
@@ -389,7 +389,7 @@ export class APIWrapper {
 
     // Search country by name
     async SearchCountryByName(name, limit) {
-        return await this.Execute(['Library', 'Other'],
+        return await this.Execute(['Other'],
             'Country',
             'SearchCountryByName',
             {name, limit}
@@ -398,7 +398,7 @@ export class APIWrapper {
 
     // Get all languages
     async GetAllLanguages() {
-        return await this.Execute(['Library', 'Other'],
+        return await this.Execute(['Other'],
             'Language',
             'GetAllLanguages'
         )
@@ -406,7 +406,7 @@ export class APIWrapper {
 
     // Search language by name
     async SearchLanguageByName(name) {
-        return await this.Execute(['Library', 'Other'],
+        return await this.Execute(['Other'],
             'Language',
             'SearchLanguageByName',
             {name}

@@ -1,3 +1,11 @@
+import FormData from 'form-data';
+
+// Form file name
+const FORM_FILE_NAME = 'file'
+
+// Images form name
+const FORM_IMAGES_NAME = 'images'
+
 // API wrapper class that contains all endpoints as simple functions
 export class APIWrapper {
     #HOST
@@ -8,13 +16,38 @@ export class APIWrapper {
     }
 
     // Fetch wrapper to call the API
-    async #fetch(relativePath, body) {
-        return await fetch(this.#HOST + relativePath, {
+    async #fetch(relativeUrl, body) {
+        return await fetch(this.#HOST + relativeUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(body)
+        })
+    }
+
+    // Send form with file and images to the API
+    async #sendFormWithFileAndImages(relativeUrl,body,fileBuffer, imagesBuffers) {
+        const form = new FormData()
+
+        // Append file
+        if (fileBuffer)
+            form.append(FORM_FILE_NAME, fileBuffer)
+
+        // Append images
+        if (imagesBuffers)
+            form.append(FORM_IMAGES_NAME, imagesBuffers)
+        
+        // Append JSON data
+        form.append('data', JSON.stringify(body), {
+            contentType: 'application/json'
+        });
+
+
+        return await fetch(this.#HOST + relativeUrl, {
+            method: 'POST',
+            body: form,
+            headers: form.getHeaders()
         })
     }
 
@@ -83,6 +116,17 @@ export class APIWrapper {
                 method: methodName,
                 parameters
             }
+        )
+    }
+
+    // Execute a method with a file and images
+    async ExecuteWithFileAndImages(modulesNames, objectName, methodName, file, images, parameters) {
+        return await this.#sendFormWithFileAndImages('/execute', {
+                modules: modulesNames,
+                object: objectName,
+                method: methodName,
+                parameters
+            }, file, images
         )
     }
 
@@ -603,38 +647,42 @@ export class APIWrapper {
     }
 
     // Create article
-    async CreateArticle(title, description, releaseDate, pages, author, topicIDs, locationSectionIDs, languageIDs) {
-        return await this.Execute(['Library', 'Document', 'Article'],
+    async CreateArticle(fileBuffer, imagesBuffers,title, description, releaseDate, pages, authors, topicIDs, locationSectionIDs, languageIDs) {
+        return await this.ExecuteWithFileAndImages(['Library', 'Document', 'Article'],
             'Article',
             'CreateArticle',
-            {document_title: title, document_description: description, document_release_date: releaseDate, document_pages: pages, document_author: author, document_topic_ids: topicIDs, document_location_section_ids: locationSectionIDs, document_language_ids: languageIDs}
+            fileBuffer, imagesBuffers,
+            {document_title: title, document_description: description, document_release_date: releaseDate, document_pages: pages, document_authors: authors, document_topic_ids: topicIDs, document_location_section_ids: locationSectionIDs, document_language_ids: languageIDs}
         )
     }
 
     // Create book
-    async CreateBook(title, description, releaseDate, pages, author, topicIDs, locationSectionIDs, languageIDs, isbn, publisherID) {
-        return await this.Execute(['Library', 'Document', 'Book'],
+    async CreateBook(fileBuffer, imagesBuffers,title, description, releaseDate, pages, authors, topicIDs, locationSectionIDs, languageIDs, isbn, publisherID) {
+        return await this.ExecuteWithFileAndImages(['Library', 'Document', 'Book'],
             'Book',
             'CreateBook',
-            {document_title: title, document_description: description, document_release_date: releaseDate, document_pages: pages, document_author: author, document_topic_ids: topicIDs, document_location_section_ids: locationSectionIDs, document_language_ids: languageIDs, book_isbn: isbn, book_publisher_id: publisherID}
+            fileBuffer, imagesBuffers,
+            {document_title: title, document_description: description, document_release_date: releaseDate, document_pages: pages, document_authors: authors, document_topic_ids: topicIDs, document_location_section_ids: locationSectionIDs, document_language_ids: languageIDs, book_isbn: isbn, book_publisher_id: publisherID}
         )
     }
 
     // Create magazine issue
-    async CreateMagazineIssue(title, description, releaseDate, pages, author, topicIDs, locationSectionIDs, languageIDs, magazineID, magazineIssueNumber) {
-        return await this.Execute(['Library', 'Document', 'Magazine'],
+    async CreateMagazineIssue(fileBuffer, imagesBuffers,title, description, releaseDate, pages, authors, topicIDs, locationSectionIDs, languageIDs, magazineID, magazineIssueNumber) {
+        return await this.ExecuteWithFileAndImages(['Library', 'Document', 'Magazine'],
             'MagazineIssue',
             'CreateMagazineIssue',
-            {document_title: title, document_description: description, document_release_date: releaseDate, document_pages: pages, document_author: author, document_topic_ids: topicIDs, document_location_section_ids: locationSectionIDs, document_language_ids: languageIDs, magazine_id: magazineID, magazine_issue_number: magazineIssueNumber}
+            fileBuffer, imagesBuffers,
+            {document_title: title, document_description: description, document_release_date: releaseDate, document_pages: pages, document_authors: authors, document_topic_ids: topicIDs, document_location_section_ids: locationSectionIDs, document_language_ids: languageIDs, magazine_id: magazineID, magazine_issue_number: magazineIssueNumber}
         )
     }
 
     // Create thesis
-    async CreateThesis(documentTitle, documentDescription, documentReleaseDate, documentPages, documentAuthor, documentTopicIDs, documentLocationSectionIDs, documentLanguageIDs) {
-        return await this.Execute(['Library', 'Document', 'Thesis'],
+    async CreateThesis(fileBuffer, imagesBuffers,title, description, releaseDate, pages, authors, topicIDs, locationSectionIDs, languageIDs) {
+        return await this.ExecuteWithFileAndImages(['Library', 'Document', 'Thesis'],
             'Thesis',
             'CreateThesis',
-            {document_title: documentTitle, document_description: documentDescription, document_release_date: documentReleaseDate, document_pages: documentPages, document_author: documentAuthor, document_topic_ids: documentTopicIDs, document_location_section_ids: documentLocationSectionIDs, document_language_ids: documentLanguageIDs}
+            fileBuffer, imagesBuffers,
+            {document_title: title, document_description: description, document_release_date: releaseDate, document_pages: pages, document_authors: authors, document_topic_ids: topicIDs, document_location_section_ids: locationSectionIDs, document_language_ids: languageIDs}
         )
     }
 }

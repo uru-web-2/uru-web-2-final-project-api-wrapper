@@ -36,7 +36,9 @@ export class APIWrapper {
 
         // Append images
         if (imagesBuffers)
-            form.append(FORM_IMAGES_NAME, imagesBuffers)
+            for (const imagesBuffer of imagesBuffers)
+                if (imagesBuffer)
+                    form.append(FORM_IMAGES_NAME, imagesBuffer)
         
         // Append JSON data
         form.append('data', JSON.stringify(body), {

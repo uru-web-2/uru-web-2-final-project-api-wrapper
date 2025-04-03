@@ -4,6 +4,9 @@ const FORM_FILE_NAME = 'file'
 // Images form name
 const FORM_IMAGES_NAME = 'images'
 
+// Stringify body name to send JSON as a string
+const BODY_STRINGIFY_NAME = 'stringify'
+
 // API wrapper class that contains all endpoints as simple functions
 export class APIWrapper {
     #HOST
@@ -38,9 +41,8 @@ export class APIWrapper {
                 if (image)
                     formData.append(FORM_IMAGES_NAME, image);
 
-        // Iterate over the body
-        for (const bodyKey of Object.keys(body))
-            formData.append(bodyKey, body[bodyKey]);
+        // Set the body as a string
+        formData.append(BODY_STRINGIFY_NAME, JSON.stringify(body));
 
         return await fetch(this.#HOST + relativeUrl, {
             method: 'POST',

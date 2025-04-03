@@ -51,7 +51,7 @@ export class APIWrapper {
     }
 
     // Sign up
-    async SignUp(firstName, lastName, username, password, email, documentNumber, documentType, documentCountry) {
+    async SignUp(firstName, lastName, username, password, email, documentNumber, documentType, documentCountryName) {
         return await this.#fetch('/signup', {
             first_name: firstName,
             last_name: lastName,
@@ -60,7 +60,7 @@ export class APIWrapper {
             email,
             document_number: documentNumber,
             document_type: documentType,
-            document_country: documentCountry
+            document_country_name: documentCountryName
         })
     }
 
@@ -256,7 +256,7 @@ export class APIWrapper {
     }
 
     // Create user
-    async CreateUser(firstName, lastName, username, password, email, documentNumber, documentType, documentCountry) {
+    async CreateUser(firstName, lastName, username, password, email, documentNumber, documentType, documentCountryName) {
         return await this.Execute(['Security'], 'User',
             'CreateUser', {
                 first_name: firstName,
@@ -266,7 +266,7 @@ export class APIWrapper {
                 email,
                 document_number: documentNumber,
                 document_type: documentType,
-                document_country: documentCountry
+                document_country_name: documentCountryName
             }
         )
     }
@@ -281,7 +281,7 @@ export class APIWrapper {
     }
 
     // Update user by admin
-    async UpdateUserByAdmin(id, firstName, lastName, username, documentNumber, documentType, documentCountry) {
+    async UpdateUserByAdmin(id, firstName, lastName, username, documentNumber, documentType, documentCountryName) {
         return await this.Execute(['Security'], 'User',
             'UpdateUserByAdmin', {
                 id,
@@ -290,7 +290,7 @@ export class APIWrapper {
                 username,
                 document_number: documentNumber,
                 document_type: documentType,
-                document_country: documentCountry
+                document_country_name: documentCountryName
             }
         )
     }
@@ -316,12 +316,12 @@ export class APIWrapper {
     }
 
     // Set profile permissions
-    async SetProfilePermissions(profileID, assignMethodIDs, revokeMethodIDs) {
+    async SetProfilePermissions(profileID, createMethodIDs, removeMethodIDs) {
         return await this.Execute(['Security'], 'Security',
             'SetProfilePermissions', {
                 profile_id: profileID,
-                assign_method_ids: assignMethodIDs,
-                revoke_method_ids: revokeMethodIDs
+                create_method_ids: createMethodIDs,
+                remove_method_ids: removeMethodIDs
             }
         )
     }

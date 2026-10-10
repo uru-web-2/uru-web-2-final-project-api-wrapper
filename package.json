@@ -22,7 +22,7 @@
     "api-wrapper"
   ],
   "author": "Ramón Álvarez",
-  "license": "ISC",
+  "license": "GPL-3.0-only",
   "bugs": {
     "url": "https://github.com/uru-web-2/uru-web-2-final-project-api-wrapper/issues"
   },

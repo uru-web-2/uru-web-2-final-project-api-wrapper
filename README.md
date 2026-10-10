@@ -21,4 +21,4 @@ Check the method signatures in `index.js` before use; the example above is only 
 
 ## License
 
-GNU General Public License v3.0. `package.json` declares `ISC`, which does not match the `LICENSE` file.
+GNU General Public License v3.0. `package.json` declares `GPL-3.0-only`, matching the `LICENSE` file.
